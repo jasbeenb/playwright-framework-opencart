@@ -32,7 +32,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 25.9.1
+          node-version: 24
           cache: 'npm'
 
       - name: Cache Playwright browsers
@@ -58,7 +58,7 @@ jobs:
         env:
           ENV: ${{ github.event.inputs.environment || 'QA' }}
           BASE_URL: ${{ secrets.BASE_URL }}
-          USERNAME: ${{ secrets.TEST_USERNAME }}
+          USERNAME: ${{ secrets.APPUSERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
           API_BASE_URL: ${{ secrets.API_BASE_URL }}
           API_TOKEN: ${{ secrets.API_TOKEN }}
@@ -68,7 +68,7 @@ jobs:
 
       - name: Upload HTML Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: playwright-html-report-${{ github.run_id }}
           path: reports/html-report/
@@ -76,7 +76,7 @@ jobs:
 
       - name: Upload Allure Results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: allure-results-${{ github.run_id }}
           path: allure-results/
