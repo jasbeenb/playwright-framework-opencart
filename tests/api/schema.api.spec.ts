@@ -75,7 +75,7 @@ test.skip('GET -- get a user', async({apiHelper}) => {
 
 
 //array
-test.skip('GET -- get all users', async({apiHelper}) => {
+test('GET -- get all users', async({apiHelper}) => {
 
    let usersResponse = await apiHelper.get(`/public/v2/users`, AUTH_HEADER);
    expect(usersResponse.status).toBe(200);

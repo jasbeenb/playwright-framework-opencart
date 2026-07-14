@@ -9,13 +9,13 @@ let userID: number;
 
 
 test.describe.serial('running in sequential mode',()=>{
-test.skip('GET API -- get all users',async({apiHelper})=>{
+test('GET API -- get all users',async({apiHelper})=>{
    let response =await apiHelper.get('/public/v2/users', AUTH_HEADER);
    expect(response.status).toBe(200);
    expect(response.body.length).toBeGreaterThan(0);
 })
 
-test.skip('POST API -- create a user',async({apiHelper})=>{
+test('POST API -- create a user',async({apiHelper})=>{
     let userData = {
         name: 'Automation',
         email: `API${Date.now()}@pwtest.com`,
@@ -29,7 +29,7 @@ test.skip('POST API -- create a user',async({apiHelper})=>{
   
 })
 
-test.skip('PUT API -- update a user',async({apiHelper})=>{
+test('PUT API -- update a user',async({apiHelper})=>{
     let userUpdatedData = {
         name: 'Automation Updated',
         status: 'inactive'
@@ -40,7 +40,7 @@ test.skip('PUT API -- update a user',async({apiHelper})=>{
    expect(await putresponse.body.status).toBe(userUpdatedData.status)
 })
 
-test.skip('DELETE API -- delete user',async({apiHelper})=>{
+test('DELETE API -- delete user',async({apiHelper})=>{
    let response =await apiHelper.delete(`/public/v2/users/${userID}`, AUTH_HEADER);
    expect(response.status).toBe(204);
 })

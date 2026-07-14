@@ -1,9 +1,11 @@
 
 import { test, expect, request } from "@playwright/test";
 
-let AUTH_TOKEN = { Authorization: 'Bearer 4042f90f03961ddf06a08aedf490ad535eaba22f942cb4972f3bed479a77faff' };
 
-test.skip('get user test', async ({ request }) => {
+const TOKEN = process.env.API_TOKEN!;
+let AUTH_TOKEN = {Authorization: `Bearer ${TOKEN}`};
+
+test('get user test', async ({ request }) => {
 
     let response = await request.get('https://gorest.co.in/public/v2/users/8524088', {
         headers: AUTH_TOKEN
@@ -16,7 +18,7 @@ test.skip('get user test', async ({ request }) => {
     console.log(response.statusText());
 })
 
-test.skip('create user test', async ({ request }) => {
+test('create user test', async ({ request }) => {
 
     let userData = {
         name: 'Jasbeen Test',
@@ -38,7 +40,7 @@ test.skip('create user test', async ({ request }) => {
     console.log((response.statusText()));
 })
 
-test.skip('Update user test', async ({ request }) => {
+test('Update user test', async ({ request }) => {
 
     let userData = {
         name: 'Jasbeen Test',
@@ -60,7 +62,7 @@ test.skip('Update user test', async ({ request }) => {
     console.log((response.statusText()));
 })
 
-test.skip('delete user test', async ({ request }) => {
+test('delete user test', async ({ request }) => {
 
     let response = await request.delete('https://gorest.co.in/public/v2/users/8524803', {
         headers: AUTH_TOKEN
