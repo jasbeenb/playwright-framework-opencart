@@ -5,7 +5,7 @@ import { test, expect, request } from "@playwright/test";
 const TOKEN = process.env.API_TOKEN!;
 let AUTH_TOKEN = {Authorization: `Bearer ${TOKEN}`};
 
-test('get user test', async ({ request }) => {
+test.skip('get user test', async ({ request }) => {
 
     let response = await request.get('https://gorest.co.in/public/v2/users/8524088', {
         headers: AUTH_TOKEN

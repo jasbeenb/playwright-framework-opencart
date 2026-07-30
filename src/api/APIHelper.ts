@@ -9,7 +9,7 @@ private readonly baseURL: string;
 constructor(request: APIRequestContext, baseURL: string)
 {
     this.request = request;
-    this.baseURL = baseURL
+    this.baseURL = baseURL;
 }
 //GET
 async get(endPoint:string, headers?: Record<string, string>)

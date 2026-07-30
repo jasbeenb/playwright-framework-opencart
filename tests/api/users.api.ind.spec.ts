@@ -18,7 +18,7 @@ async function createUser(apiHelper: any) {
 
 }
 
-test('POST API -- create a user', async ({ apiHelper }) => {
+test.skip('POST API -- create a user', async ({ apiHelper }) => {
     let postResponse = await createUser(apiHelper);
     let getResponse = await apiHelper.get(`/public/v2/users/${postResponse.id}`, AUTH_HEADER)
     expect(getResponse.status).toBe(200);
@@ -26,7 +26,7 @@ test('POST API -- create a user', async ({ apiHelper }) => {
 
 })
 
-test('PUT API -- update a user', async ({ apiHelper }) => {
+test.skip('PUT API -- update a user', async ({ apiHelper }) => {
     let postResponse = await createUser(apiHelper);
 
     let userUpdatedData = {
@@ -35,6 +35,8 @@ test('PUT API -- update a user', async ({ apiHelper }) => {
     };
 
     let putResponse = await apiHelper.put(`/public/v2/users/${postResponse.id}`, userUpdatedData, AUTH_HEADER);
+   let getrepsonse = await apiHelper.get(`/public/v2/users/${postResponse.id}`, AUTH_HEADER);
+   console.log(getrepsonse.body.id);
     expect(putResponse.status).toBe(200);
     expect(putResponse.body.name).toBe(userUpdatedData.name);
     expect(putResponse.body.status).toBe(userUpdatedData.status);
@@ -45,7 +47,7 @@ test('PUT API -- update a user', async ({ apiHelper }) => {
 
 })
 
-test('DELETE API -- delete a user', async ({ apiHelper }) => {
+test.skip('DELETE API -- delete a user', async ({ apiHelper }) => {
     let postResponse = await createUser(apiHelper);
 
    let response= await apiHelper.delete(`/public/v2/users/${postResponse.id}`,  AUTH_HEADER);

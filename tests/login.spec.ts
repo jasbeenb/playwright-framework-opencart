@@ -10,9 +10,9 @@ import { JsonHelper } from '../src/utils/jsonHelper';
         await loginPage.goToLoginPage();
     });
 
-    test('login page test', async ({loginPage}) => {
+    test('login page test', async ({basePage}) => {
 
-        const pageTitle = await loginPage.getPageTitle();//loginPage.getLoginPageTitle();
+        const pageTitle = await basePage.getPageTitle();//loginPage.getLoginPageTitle();
         console.log('Login page title is ', pageTitle);
         expect(pageTitle).toBe('Account Login');
     });
