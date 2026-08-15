@@ -25,7 +25,7 @@ export class BasePage {
 
     //common functionalities
     async waitForPageLoad(): Promise<void> {
-        await this.page.waitForLoadState('load');
+        await this.page.waitForLoadState("load");
     }
 
         async getPageTitle(): Promise<string> {

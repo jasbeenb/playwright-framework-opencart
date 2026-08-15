@@ -64,7 +64,7 @@ test.skip('GET -- get a user', async({apiHelper}) => {
    let userResponse = await apiHelper.get(`/public/v2/users/${userId}`, AUTH_HEADER);
    expect(userResponse.status).toBe(200);
 
-  let validate = ajv.compile(userSchema);
+  let validate = ajv.compile(userSchema) 
   let isSchemaValid = validate(userResponse.body);
   if(!isSchemaValid){
     console.log("Schema Errors: ", validate.errors);
